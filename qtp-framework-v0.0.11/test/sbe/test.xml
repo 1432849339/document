@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sbe:messageSchema xmlns:sbe="http://www.fixprotocol.org/ns/simple/RC3"
+                   package="test"
+                   id="1"
+                   version="0"
+                   semanticVersion="1.0"
+				   description="test"
+                   byteOrder="littleEndian">
+    <types>
+        <composite name="messageHeader" description="Message identifiers and length of message root">
+            <type name="blockLength" primitiveType="uint16"/>
+            <type name="templateId" primitiveType="uint16"/>
+            <type name="schemaId" primitiveType="uint16"/>
+            <type name="version" primitiveType="uint16"/>
+        </composite>
+        <composite name="groupSizeEncoding" description="Repeating group dimensions">
+            <type name="blockLength" primitiveType="uint16"/>
+            <type name="numInGroup" primitiveType="uint16"/>
+        </composite>
+        <composite name="varDataEncoding">
+            <type name="length" primitiveType="uint32" maxValue="1073741824"/>
+            <type name="varData" primitiveType="uint8" length="0" characterEncoding="UTF-8"/>
+        </composite>
+    </types>
+    <types>
+        <composite name="Trader">
+            <type name="id" primitiveType="uint32"/>
+            <type name="type" primitiveType="uint32"/>
+        </composite>
+    </types>
+
+    <!-- messages -->
+
+    <sbe:message name="LoginQry" id="10001" description="">
+        <field name="capMgrId" id="1" type="uint32"/>
+        <field name="capUnitId" id="1" type="uint32"/>
+        <field name="tradeUnitId" id="2" type="uint32"/>
+        <field name="trader" id="3" type="Trader"/>
+    </sbe:message>
+    <sbe:message name="LoginAns" id="10002" description="">
+        <field name="capMgrId" id="1" type="uint32"/>
+        <field name="capUnitId" id="2" type="uint32"/>
+        <field name="tradeUnitId" id="3" type="uint32"/>
+        <field name="traderId" id="4" type="uint32"/>
+        <field name="retCode" id="100" type="int32"/>
+        <data name="message" id="101" type="varDataEncoding"/>
+    </sbe:message>
+
+</sbe:messageSchema>

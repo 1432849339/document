@@ -1,0 +1,36 @@
+v0.0.11 20160722
+1. 解决IO线程和业务线程在处理Session时死锁
+
+v0.0.10 20160527
+1. QtpClient重连的时候增加定时器
+2. 解决QtpClient错报OnConnected事件
+
+v0.0.9 20160525
+1. 增加QtpTime
+2. 增加GetSession from session_id
+
+v0.0.8 20160521
+1. QtpServer/QtpClient接口优化
+
+v0.0.7 20160520
+1. Stage增加timeout支持
+
+v0.0.6 20160519
+1. 修改版本信息的实现
+2. 采用延迟回调和不加锁回调
+
+v0.0.4 20160517
+1. 增加QtpMessage::CopyTag
+2. 修复QtpMessage::GetTag没有返回值的错误
+
+v0.0.3 20160512
+1. 修复QtpMessage释放内存的bug
+
+v0.0.2 20160511
+1. 增加spin lock支持, singleton已改用spin lock
+2. 增加版本信息
+
+v0.0.1 20160507
+1. 增加spdlog日志支持
+2. 解决QtpServer无法出发OnClose的问题
+3. 增加向所有连接广播数据的接口
